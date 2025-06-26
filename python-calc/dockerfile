@@ -1,0 +1,20 @@
+# 1. Base image
+FROM ubuntu:20.04
+
+# 2. Set working directory inside the container
+WORKDIR /app
+
+# 3. Install Python and pip
+RUN apt-get update && \
+    apt-get install -y python3 python3-pip && \
+    apt-get clean
+
+# 4. Copy all app files into the container
+COPY . .
+
+# 5. Set the default executable (entrypoint)
+ENTRYPOINT ["python3"]
+
+# 6. Command to run when the container starts
+CMD ["calculator.py"]
+
